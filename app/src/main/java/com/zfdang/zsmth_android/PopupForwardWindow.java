@@ -86,11 +86,11 @@ public class PopupForwardWindow extends PopupWindow {
     mNoAtt = (CheckBox) contentView.findViewById(R.id.popup_forward_noatt);
 
     // init status
-    mTargetSelf.setChecked(true);
-    mTargetOther.setChecked(false);
-    mTargetOtherContent.setEnabled(false);
+    mTargetSelf.setChecked(false);
+    mTargetOther.setChecked(true);
+    mTargetOtherContent.setEnabled(true);
     mTargetOtherContent.setText(Settings.getInstance().getTarget());
-    mThread.setChecked(false);
+    mThread.setChecked(true);
     mNoRef.setEnabled(false);
 
     Button cancel = (Button) contentView.findViewById(R.id.popup_forward_cancel);

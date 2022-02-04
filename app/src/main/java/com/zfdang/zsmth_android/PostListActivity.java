@@ -457,10 +457,10 @@ public class PostListActivity extends SMTHBaseActivity
     menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_query_author), R.drawable.ic_person_black_48dp)); // 3
     menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_filter_author), R.drawable.ic_find_in_page_black_48dp)); // 4
     menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_copy_content), R.drawable.ic_content_copy_black_48dp)); // 5
-    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_foward), R.drawable.ic_send_black_48dp)); // 6
-    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_view_in_browser), R.drawable.ic_open_in_browser_black_48dp)); // 7
-    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_share), R.drawable.ic_share_black_48dp)); // 8
-    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_delete_post), R.drawable.ic_delete_black_48dp));  // 9
+    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_view_in_browser), R.drawable.ic_open_in_browser_black_48dp)); // 6
+    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_share), R.drawable.ic_share_black_48dp)); // 7
+    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_delete_post), R.drawable.ic_delete_black_48dp));  // 8
+    menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_foward), R.drawable.ic_send_black_48dp)); // 9
     menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_edit_post), R.drawable.ic_edit_black_48dp)); // 10
     menuItemsArray.add(new PostActionAlertDialogItem(getString(R.string.post_convert_image), R.drawable.ic_photo_black_48dp)); // 11
 
@@ -596,22 +596,22 @@ public class PostListActivity extends SMTHBaseActivity
         Toast.makeText(PostListActivity.this, "复制失败！", Toast.LENGTH_SHORT).show();
       }
     } else if (which == 6) {
+      // open post in browser
+      String url = String.format(SMTHHelper.SMTH_MOBILE_URL + "/article/%s/%s?p=%d", mTopic.getBoardEngName(), mTopic.getTopicID(), mCurrentPageNo);
+      startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+    } else if (which == 7) {
+      // post_share
+      // Toast.makeText(PostListActivity.this, "分享:TBD", Toast.LENGTH_SHORT).show();
+      sharePost(post);
+    } else if (which == 8) {
+      // delete post
+      deletePost(post);
+    } else if (which == 9) {
       // post_foward_self
       // Toast.makeText(PostListActivity.this, "转寄信箱:TBD", Toast.LENGTH_SHORT).show();
       PopupForwardWindow popup = new PopupForwardWindow();
       popup.initPopupWindow(this, post);
       popup.showAtLocation(mRecyclerView, Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 100);
-    } else if (which == 7) {
-      // open post in browser
-      String url = String.format(SMTHHelper.SMTH_MOBILE_URL + "/article/%s/%s?p=%d", mTopic.getBoardEngName(), mTopic.getTopicID(), mCurrentPageNo);
-      startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-    } else if (which == 8) {
-      // post_share
-      // Toast.makeText(PostListActivity.this, "分享:TBD", Toast.LENGTH_SHORT).show();
-      sharePost(post);
-    } else if (which == 9) {
-      // delete post
-      deletePost(post);
     } else if (which == 10) {
       // edit post
       ComposePostContext postContext = new ComposePostContext();
