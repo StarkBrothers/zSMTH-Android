@@ -56,6 +56,21 @@ public class Settings {
     }
   }
 
+  private static final String COOKIE_KEY = "cookie";
+  private String mCookie;
+
+  public String getCookie() {
+    return mCookie;
+  }
+
+  public void setCookie(String mCookie) {
+    if (this.mCookie == null || !this.mCookie.equals(mCookie)) {
+      this.mCookie = mCookie;
+      mEditor.putString(COOKIE_KEY, this.mCookie);
+      mEditor.commit();
+    }
+  }
+
   // auto login
   private static final String AUTO_LOGIN = "auto_login";
   private boolean bAutoLogin;
@@ -457,6 +472,7 @@ public class Settings {
     mShowSticky = mPreference.getBoolean(SHOW_STICKY_TOPIC, false);
     mUsername = mPreference.getString(USERNAME_KEY, "");
     mPassword = mPreference.getString(PASSWORD_KEY, "");
+    mCookie = mPreference.getString(COOKIE_KEY, "");
     bAutoLogin = mPreference.getBoolean(AUTO_LOGIN, true);
     bLastLoginSuccess = mPreference.getBoolean(LAST_LOGIN_SUCCESS, false);
     bUserOnline = mPreference.getBoolean(USER_ONLINE, false);

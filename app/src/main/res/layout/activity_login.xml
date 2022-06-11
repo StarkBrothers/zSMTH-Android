@@ -25,7 +25,6 @@
       android:padding="15dp"
       >
 
-
     <!-- 用户名 input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_username"
@@ -82,6 +81,23 @@
         android:layout_marginTop="10dp"
         android:text="@string/login_label_signin"
         />
+
+    <!-- cookie input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_cookie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signin_button"
+        >
+
+      <EditText
+          android:id="@+id/cookie_edit"
+          android:layout_width="fill_parent"
+          android:layout_height="420dp"
+          android:hint="@string/login_label_cookie"
+          android:inputType="textMultiLine"
+          android:singleLine="false" />
+    </com.google.android.material.textfield.TextInputLayout>
   </RelativeLayout>
 
   <RelativeLayout
